@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: CREATOR_TEST
+  h2:
+    console:
+      enabled: true
+      path: /db
+  datasource:
+    url: jdbc:h2:mem:blog
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    ddl-auto: create-drop
+    pool-size: 30
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect

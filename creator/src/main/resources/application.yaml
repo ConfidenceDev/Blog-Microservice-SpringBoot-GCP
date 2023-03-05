@@ -1,0 +1,51 @@
+#server.port = 8081
+#
+#spring.application.name = PRODUCT
+#spring.h2.console.enabled = true
+#spring.h2.console.path = /db
+#spring.datasource.url = jdbc:h2:mem:blog
+#spring.datasource.driverClassName = org.h2.Driver
+#spring.datasource.username = sa
+#spring.datasource.password = password
+#spring.datasource.ddl-auto = create-drop
+#spring.datasource.pool-size = 30
+#spring.jpa.database-platform = org.hibernate.dialect.H2Dialect
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: CREATOR
+  h2:
+    console:
+      enabled: true
+      path: /db
+  datasource:
+    url: jdbc:h2:mem:blog
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    ddl-auto: create-drop
+    pool-size: 30
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+#spring:
+#  application:
+#    name: CREATOR
+#  datasource:
+#    main:
+#      driver-class-name: org.postgresql.Driver
+#      jdbc-url: jdbc:postgresql://localhost:5432/creator
+#      username: postgres
+#      password: "root"
+#      pool-size: 30
+#    jpa:
+#      properties:
+#        hibernate:
+#          dialect: org.hibernate.dialect.PostgreSQLDialect
+#          format_sql: "true"
+#      hibernate:
+#        ddl-auto: create-drop
+#      show-sql: "true"
