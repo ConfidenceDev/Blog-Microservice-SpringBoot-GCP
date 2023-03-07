@@ -3,6 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Blog-Microservice-SpringBoot-GCP.iml" filepath="$PROJECT_DIR$/.idea/Blog-Microservice-SpringBoot-GCP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/articles/articles.iml" filepath="$PROJECT_DIR$/articles/articles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-gateway/cloud-gateway.iml" filepath="$PROJECT_DIR$/cloud-gateway/cloud-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config-server/config-server.iml" filepath="$PROJECT_DIR$/config-server/config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/creator/creator.iml" filepath="$PROJECT_DIR$/creator/creator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-registry/service-registry.iml" filepath="$PROJECT_DIR$/service-registry/service-registry.iml" />
     </modules>
   </component>
 </project>

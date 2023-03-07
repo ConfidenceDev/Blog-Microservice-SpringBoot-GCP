@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: article-service-app
+spec:
+  selector:
+    matchLabels:
+      app: article-service-app
+  template:
+    metadata:
+      labels:
+        app: article-service-app
+    spec:
+      containers:
+        - name: article-service-app
+          image: <Image>
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8082
+          env:
+            - name: CONFIG_SERVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: config-cm
+                  key: config_url
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresql-cm
+                  key: hostname
+            - name: EUREKA_SERVER_ADDRESS
+              valueFrom:
+                configMapKeyRef:
+                  name: eureka-cm
+                  key: eureka_service_address
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: article-service-svc
+spec:
+  selector:
+    app: article-service-app
+  ports:
+    - port: 80
+      targetPort: 8082

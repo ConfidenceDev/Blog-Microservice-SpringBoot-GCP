@@ -6,6 +6,7 @@ import me.plurg.creator.entity.CreatorEntity;
 import me.plurg.creator.exception.CreatorException;
 import me.plurg.creator.external.ArticleResponse;
 import me.plurg.creator.external.DeleteArticle;
+import me.plurg.creator.external.feign.ArticleService;
 import me.plurg.creator.model.Article;
 import me.plurg.creator.model.Creator;
 import me.plurg.creator.model.User;
@@ -24,6 +25,9 @@ public class CreatorServiceImpl implements CreatorService {
 
     @Autowired
     private CreatorRepo creatorRepo;
+
+    @Autowired
+    private ArticleService articleService;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -71,7 +75,7 @@ public class CreatorServiceImpl implements CreatorService {
     public Long createArticle(Article article) {
         log.info("Sending object to article controller");
         ArticleResponse response =
-                restTemplate.postForObject("http://localhost:8082/v1/articles",
+                restTemplate.postForObject("http://ARTICLE/v1/articles",
                         article, ArticleResponse.class);
 
         log.info("Fetched response");
@@ -87,8 +91,9 @@ public class CreatorServiceImpl implements CreatorService {
     @Override
     public void deleteArticle(Long id) {
         log.info("Sending id to article controller for deletion");
-        restTemplate.delete("http://localhost:8082/v1/articles/" + id);
+        //restTemplate.delete("http://localhost:8082/v1/articles/" + id);
 
+        articleService.deleteArticle(id);
         log.info("Article deleted");
     }
 }

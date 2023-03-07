@@ -1,0 +1,88 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgresql-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  hostPath:
+    #    path: "/mnt/data"  # - for Unix/Linux
+    #    path: "/mnt/host"  # - for Others
+    path: "/run/desktop/mnt/data/c/temp/testfiles"
+    type: DirectoryOrCreate
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgresql-pvc
+spec:
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgresql
+spec:
+  selector:
+    matchLabels:
+      app: postgresql
+  serviceName: postgresql
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgresql
+    spec:
+      containers:
+        - name: postgresql
+          image: <image>
+          env:
+            - name: POSTGRESQL_ROOT_PASSWORD
+              value: root
+          ports:
+            - containerPort: 5432
+              name: postgresql
+          volumeMounts:
+            - name: postgresql-initdb
+              mountPath: /docker-entrypoint-initdb.d
+            - name: postgresql-persistent-storage
+              mountPath: /var/lib/postgresql
+      volumes:
+        - name: postgresql-initdb
+          configMap:
+            name: postgresql-initdb-cm
+        - name: postgresql-persistent-storage
+          persistentVolumeClaim:
+            claimName: postgresql-pvc
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-initdb-cm
+data:
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS creatordb;
+    CREATE DATABASE IF NOT EXISTS articledb;
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql
+spec:
+  clusterIP: None
+  selector:
+    app: postgresql
+  ports:
+    - port: 5432

@@ -2,8 +2,6 @@ package me.plurg.articles.exception;
 
 import lombok.Data;
 
-import java.util.function.Supplier;
-
 @Data
 public class ArticleException extends RuntimeException {
 

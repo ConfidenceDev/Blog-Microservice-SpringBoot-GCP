@@ -1,0 +1,40 @@
+server:
+  port: 9090
+
+spring:
+  redis:
+    host: redis
+    port: 6379
+  application:
+    name: API-GATEWAY
+  config:
+    import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}
+  cloud:
+    gateway:
+      routes:
+        - id : CREATOR
+          uri: lb://CREATOR
+          predicates:
+            - Path=/v1/creators/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: CREATOR
+                fallbackuri: forward:/creatorServiceFallBack
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 1
+        - id: ARTICLE
+          uri: lb://ARTICLE
+          predicates:
+            - Path=/v1/articles/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: ARTICLE
+                fallbackuri: forward:/articleServiceFallBack
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 1
