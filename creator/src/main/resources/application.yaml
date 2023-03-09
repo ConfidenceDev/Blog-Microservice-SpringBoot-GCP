@@ -1,16 +1,3 @@
-#server.port = 8081
-#
-#spring.application.name = PRODUCT
-#spring.h2.console.enabled = true
-#spring.h2.console.path = /db
-#spring.datasource.url = jdbc:h2:mem:blog
-#spring.datasource.driverClassName = org.h2.Driver
-#spring.datasource.username = sa
-#spring.datasource.password = password
-#spring.datasource.ddl-auto = create-drop
-#spring.datasource.pool-size = 30
-#spring.jpa.database-platform = org.hibernate.dialect.H2Dialect
-
 server:
   port: 8081
 
@@ -32,6 +19,7 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
   config:
     import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}
+#    import: configserver:http://${CONFIG_SERVER_URL:localhost}:9296
   resilience4j:
     circuitbreaker:
       instances:
@@ -45,6 +33,20 @@ spring:
           sliding-window-size: 10
           sliding-window-type: COUNT_BASED
 
+#server.port = 8081
+#
+#spring.application.name = PRODUCT
+#spring.h2.console.enabled = true
+#spring.h2.console.path = /db
+#spring.datasource.url = jdbc:h2:mem:blog
+#spring.datasource.driverClassName = org.h2.Driver
+#spring.datasource.username = sa
+#spring.datasource.password = password
+#spring.datasource.ddl-auto = create-drop
+#spring.datasource.pool-size = 30
+#spring.jpa.database-platform = org.hibernate.dialect.H2Dialect
+
+# ========================================================================
 
 #spring:
 #  application:
@@ -64,3 +66,43 @@ spring:
 #      hibernate:
 #        ddl-auto: create-drop
 #      show-sql: "true"
+
+# ========================================================================
+#spring:
+#  application:
+#    name: ARTICLE
+#  data:
+#    mongodb:
+#      uri: mongodb://localhost:27017/article
+
+# ========================================================================
+#spring:
+#  application:
+#    name: CREATOR
+#  h2:
+#    console:
+#      enabled: true
+#      path: /db
+#  datasource:
+#    url: jdbc:h2:mem:blog
+#    driverClassName: org.h2.Driver
+#    username: sa
+#    password:
+#    ddl-auto: create-drop
+#    pool-size: 30
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+
+#====================
+
+#url: jdbc:postgresql://${DB_HOST:localhost}:5432/creatordb
+
+#  datasource:
+#    url: jdbc:postgresql:localhost:5432/creatordb
+#    driverClassName: org.postgresql.Driver
+#    username: postgres
+#    password: "root"
+#    ddl-auto: create-drop
+#    pool-size: 30
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect

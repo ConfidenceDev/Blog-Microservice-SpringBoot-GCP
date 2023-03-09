@@ -31,10 +31,3 @@ spring:
             permitted-number-of-calls-in-half-open-state: 3
             sliding-window-size: 10
             sliding-window-type: COUNT_BASED
-
-#spring:
-#  application:
-#    name: ARTICLE
-#  data:
-#    mongodb:
-#      uri: mongodb://localhost:27017/article

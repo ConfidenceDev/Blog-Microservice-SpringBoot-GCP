@@ -1,3 +1,14 @@
 package me.plurg.creator.model;
 
-public record User(String name){}
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class User{
+    private String name;
+}

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -14,11 +15,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="articles" target="17" />
-      <module name="cloud-gateway" target="17" />
-      <module name="config-server" target="17" />
-      <module name="creator" target="17" />
-      <module name="service-registry" target="17" />
+      <module name="articles" target="11" />
+      <module name="cloud-gateway" target="11" />
+      <module name="config-server" target="11" />
+      <module name="creator" target="11" />
+      <module name="service-registry" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

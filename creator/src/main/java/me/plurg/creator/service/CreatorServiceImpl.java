@@ -5,7 +5,6 @@ import me.plurg.creator.dao.CreatorRepo;
 import me.plurg.creator.entity.CreatorEntity;
 import me.plurg.creator.exception.CreatorException;
 import me.plurg.creator.external.ArticleResponse;
-import me.plurg.creator.external.DeleteArticle;
 import me.plurg.creator.external.feign.ArticleService;
 import me.plurg.creator.model.Article;
 import me.plurg.creator.model.Creator;
@@ -50,7 +49,7 @@ public class CreatorServiceImpl implements CreatorService {
         log.info("Adding user to entity object");
 
         CreatorEntity creator = CreatorEntity.builder()
-                .name(user.name())
+                .name(user.getName())
                 .created(Instant.now())
                 .build();
 
