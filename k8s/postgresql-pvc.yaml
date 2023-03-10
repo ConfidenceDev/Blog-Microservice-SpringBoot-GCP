@@ -11,7 +11,8 @@ spec:
   hostPath:
     #    path: "/mnt/data"  # - for Unix/Linux
     #    path: "/mnt/host"  # - for Others
-    path: "/run/desktop/mnt/data/c/temp/testfiles"
+    #    path: "/run/desktop/mnt/data/c/temp/testfiles"   # - for Windows
+    path: "/mnt/data"
     type: DirectoryOrCreate
 
 ---
@@ -69,7 +70,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mysql-initdb-cm
+  name: postgresql-initdb-cm
 data:
   init.sql: |
     CREATE DATABASE IF NOT EXISTS creatordb;
