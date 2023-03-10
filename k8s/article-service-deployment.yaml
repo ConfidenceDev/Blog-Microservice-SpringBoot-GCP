@@ -15,10 +15,6 @@ spec:
         - name: article-service-app
           image: confidencedev/articles:latest
           imagePullPolicy: Always
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
           ports:
             - containerPort: 8082
           env:

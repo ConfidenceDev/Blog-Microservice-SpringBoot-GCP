@@ -15,10 +15,6 @@ spec:
         - name: creator-service-app
           image: confidencedev/creator:latest
           imagePullPolicy: Always
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
           ports:
             - containerPort: 8081
           env:

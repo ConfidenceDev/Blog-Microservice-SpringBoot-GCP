@@ -46,7 +46,7 @@ spec:
     spec:
       containers:
         - name: postgresql
-          image: <image>
+          image: postgres
           env:
             - name: POSTGRESQL_ROOT_PASSWORD
               value: root

@@ -14,10 +14,6 @@ spec:
       containers:
         - name: config-server-app
           image: confidencedev/config-server:latest
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
           ports:
             - containerPort: 9296
           env:
