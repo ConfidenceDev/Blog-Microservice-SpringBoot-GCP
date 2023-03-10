@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: article-service-app
-          image: <Image>
+          image: confidencedev/articles:latest
           imagePullPolicy: Always
           resources:
             limits:

@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: creator-service-app
-          image: <Image>
+          image: confidencedev/creator:latest
           imagePullPolicy: Always
           resources:
             limits:

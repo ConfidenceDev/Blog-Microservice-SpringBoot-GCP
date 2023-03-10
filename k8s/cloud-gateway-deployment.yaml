@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: cloud-gateway-app
-          image: name
+          image: confidencedev/cloud-gateway:latest
           imagePullPolicy: Always
           resources:
             limits:
