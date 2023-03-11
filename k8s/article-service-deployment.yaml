@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: article-service-app
-          image: confidencedev/articles:latest
+          image: confidencedev/articles:0.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 8082

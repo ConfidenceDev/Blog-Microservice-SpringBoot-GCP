@@ -14,6 +14,7 @@ spec:
       containers:
         - name: redis-app
           image: redis
+          imagePullPolicy: Always
           command:
             - "redis-server"
           args:

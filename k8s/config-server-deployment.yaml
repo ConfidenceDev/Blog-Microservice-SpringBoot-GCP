@@ -13,7 +13,8 @@ spec:
     spec:
       containers:
         - name: config-server-app
-          image: confidencedev/config-server:latest
+          image: confidencedev/config-server:0.0.1
+          imagePullPolicy: Always
           ports:
             - containerPort: 9296
           env:
@@ -30,7 +31,7 @@ metadata:
   name: config-server-svc
 spec:
   selector:
-    app: myapp
+    app: config-server-app
   ports:
     - port: 80
       targetPort: 9296

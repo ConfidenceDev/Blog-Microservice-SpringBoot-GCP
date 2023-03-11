@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: cloud-gateway-app
-          image: confidencedev/cloud-gateway:latest
+          image: confidencedev/cloud-gateway:0.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 9090

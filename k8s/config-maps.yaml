@@ -17,6 +17,6 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: postgresql-cm
+  name: postgres-cm
 data:
-  hostname: "postgresql-0.postgresql"
+  hostname: "postgres-0.postgres"

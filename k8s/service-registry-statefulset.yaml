@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
         - name: eureka
-          image: confidencedev/service-registry:latest
+          image: confidencedev/service-registry:0.0.1
+          imagePullPolicy: Always
           ports:
             - containerPort: 8761
 

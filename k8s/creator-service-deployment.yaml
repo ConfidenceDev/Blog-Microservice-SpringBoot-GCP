@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: creator-service-app
-          image: confidencedev/creator:latest
+          image: confidencedev/creator:0.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 8081

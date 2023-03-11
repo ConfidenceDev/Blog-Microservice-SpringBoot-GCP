@@ -1,0 +1,21 @@
+node {
+    stage('Checkout'){
+        checkout([$class: 'GitSCM',
+            branches: [[name: '*/main']],
+            extensions: [],
+            userRemoteConfigs: [[credentials: 'git', 
+            url: 'github_repo_url']]
+        ])
+    }
+    stage('Deploy'){
+        step([
+          $class: 'KubernetesEngineBuilder',
+          projectId: env.PROJECT_ID,
+          cluserName: env.CLUSTER,
+          location: env.ZONE,
+          manifestPattern: 'k8s/',
+          credentialsId: env.PROJECT_ID,
+          verifyDeployments: true  
+        ])
+    }
+}
