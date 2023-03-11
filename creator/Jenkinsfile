@@ -12,11 +12,25 @@ node {
         ])
     }
     
-    stage('Build and Push Image'){
+    stage('Build'){
+        sh "${mvnCMD} clean install"
+    }
+
+    stage('SonarQube analysis'){
+        withSonarQubeEnv('Sonar'){
+            sh "${mvnCMD} sonar:sonar"
+        }
+    }
+
+    stage('Quality gate'){
+        waitForQualityGate abortPipeline: true
+    }
+
+    stage('Push Image'){
         withCredentials([file(credentialsId: 'gcp', variable: 'GC_KEY')]){
             sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
             sh('gcloud auth configure-docker us-west-docker.pkg.dev')
-            sh "${mvnCMD} clean install jib:build -DREPO_URL=${repourl}"
+            sh "${mvnCMD} jib:build -DREPO_URL=${repourl}"
         }
     }
 
