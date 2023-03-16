@@ -75,6 +75,12 @@ spring:
 #    mongodb:
 #      uri: mongodb://localhost:27017/article
 
+#spring:
+#  data:
+#    mongodb:
+#      uri: mongodb+srv://<username>:<password>@spring-boot-cluster.p3ezd.mongodb.net/nodedb
+#      database: nodedb
+
 # ========================================================================
 #spring:
 #  application:
