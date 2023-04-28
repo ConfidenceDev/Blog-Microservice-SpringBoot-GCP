@@ -8,6 +8,7 @@ import me.plurg.articles.external.ArticleRequest;
 import me.plurg.articles.model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.List;
@@ -20,6 +21,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private ArticleRepo articleRepo;
 
+    @Transactional(readOnly = true)
     @Override
     public List<Article> getArticles() {
         log.info("Fetching all articles...");

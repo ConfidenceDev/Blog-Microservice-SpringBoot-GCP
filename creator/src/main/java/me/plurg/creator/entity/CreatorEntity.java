@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.Instant;
 
 @Entity
@@ -28,6 +29,7 @@ public class CreatorEntity {
     private long id;
 
     @Column(name = "NAME")
+    @NotBlank(message = "Enter a name!")
     private String name;
 
     @Column(name = "CREATED")

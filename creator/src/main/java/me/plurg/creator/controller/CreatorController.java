@@ -1,5 +1,9 @@
 package me.plurg.creator.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.log4j.Log4j2;
 import me.plurg.creator.external.ArticleResponse;
 import me.plurg.creator.model.Article;
@@ -9,6 +13,7 @@ import me.plurg.creator.service.CreatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,8 +35,34 @@ public class CreatorController {
         return new ResponseEntity<>(allCreators, HttpStatus.OK);
     }
 
+    @Operation(
+            description = "",
+            responses = {
+                    @ApiResponse(responseCode = "400", ref = "bad_request"),
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    examples = {
+                                            @ExampleObject(
+                                                    value = "\"code:\" 200, \"status:\" \"success\", \"message:\" \"registration successful!\""
+                                            )
+                                    }
+                            )
+                    )
+            }
+    )
     @PostMapping("/register")
-    public ResponseEntity<Long> createUser (@RequestBody User user){
+    public ResponseEntity<Long> createUser (@io.swagger.v3.oas.annotations.parameters.RequestBody(
+            content = @Content(
+                    mediaType = "application/json",
+                    examples = {
+                            @ExampleObject(
+                                    value = "\"username:\" \"admin\", \"password:\" \"admin\""
+                            ),
+                    })
+    ) @Validated @RequestBody User user){
         log.info("Registering user...");
         Long userId = creatorService.createUser(user);
 

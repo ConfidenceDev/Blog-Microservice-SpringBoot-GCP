@@ -8,6 +8,9 @@ spring:
     console:
       enabled: true
       path: /db
+  graphql:
+    graphiql:
+      enable: true
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:5432/creatordb
     driverClassName: org.postgresql.Driver
