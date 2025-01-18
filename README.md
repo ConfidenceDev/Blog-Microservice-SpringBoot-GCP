@@ -20,6 +20,6 @@ A blog api with a microservice architecture(Cloud gateway, Service registry, Zip
 
 For inquires, support, bug reports and suggestions send me a mail@: confidostic3@gmail.com
 
-- Facebook: Confidence Eze
+- Facebook: Confidence Dev
 - Twitter: @ConfidenceDev
 - Instagram: @confidence.dev
